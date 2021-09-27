@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "jQueryValidate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>jQuery Validate</h3>
+<hr />
+<form id="myform" name="myform">
+    Name : <input type="text" name="Name" class="form-control" /><br />
+    Age : <input type="tel" name="Age" class="form-control mt-2 mb-2" /><br />
+    <input type="submit" value="Validate" class="btn btn-primary" />
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+<script>
+    $(function () {
+        $("#myform").validate({
+            rules: {
+                Name: { required: true, minlength: 3 },
+                Age: { required: true, digits: true, range: [18, 60] }
+            },
+            messages: {
+                Age: {
+                    required: "*", digits: "Nhập số", range: "Từ 18 đến 60 tuổi"
+                },
+                Name: { required: "Phải nhập", minlength: "Tối thiểu 3 kí tự" }
+            },
+            errorLabelContainer: "#myError",
+            wrapper: "li",
+            submitHandler: function (form) {
+                if (confirm("Dữ liệu form đã hợp lệ. Bạn có muốn submit không ?")) {
+                    form.submit();
+                }
+            }
+        });
+    });
+</script>
+}
+<style type="text/css">
+    label.error{
+        color: red;
+    }
+    input.error{
+        background-color: red;
+        color: yellow;
+    }
+</style>
