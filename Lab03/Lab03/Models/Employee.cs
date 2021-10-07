@@ -65,6 +65,5 @@ namespace Lab03.Models
                 return ValidationResult.Success;
             }
         }
-        
     }
 }
