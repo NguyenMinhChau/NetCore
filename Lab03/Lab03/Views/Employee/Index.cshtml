@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "jQueryValidate";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -14,8 +13,8 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
-}
-<script>
+    }
+    <script>
     $(function () {
         $("#myform").validate({
             rules: {
@@ -37,13 +36,14 @@
             }
         });
     });
-</script>
+    </script>
 }
 <style type="text/css">
-    label.error{
+    label.error {
         color: red;
     }
-    input.error{
+
+    input.error {
         background-color: red;
         color: yellow;
     }

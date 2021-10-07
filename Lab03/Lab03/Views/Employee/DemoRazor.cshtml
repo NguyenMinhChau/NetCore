@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "DemoRazor";
+    var hello = "<h5>Hello World</h5>";
+    var name = "<h5>Nguyễn Minh Châu</h5>";
+}
+
+<h1>DemoRazor</h1>
+Chưa dùng Razor:
+<br /> @hello
+<br />
+Đã dùng Razor: @Html.Raw(hello)
+
+@** không render ra thẻ html trong inspect trình duyệt *@
+@if (1 > 0)
+{
+    <text>@name</text>
+}
+@** không render ra thẻ html trong inspect trình duyệt *@
+@if (1 > 0)
+{
+    @:name
+}
+@** có render ra thẻ html trong inspect trình duyệt *@
+@if (1 > 0)
+{
+    <span>@name</span>
+}
+
