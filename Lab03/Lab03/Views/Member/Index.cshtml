@@ -1,14 +1,8 @@
 ﻿
 @{
-    ViewData["Title"] = "Form Đăng Kí";
+    ViewData["Title"] = "ĐĂNG KÝ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .random {
-        text-align: center;
-    }
-</style>
-
 <div class="container">
     <h3>Đăng ký thành viên</h3>
     <form id="myform" name="myform">
@@ -92,72 +86,76 @@
     </form>
 </div>
 @section Scripts {
+    @*  *@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-<script src ="~/lib/jquery-validation/dist/additional-methods.js"></script>
-<script>
-
-    $(function () {
-        $("#myform").validate({
-            rules: {
-                masv: { required: true, minlength: 6 },
-                hoten: { required: true },
-                ngaysinh: { date: true },
-                email: { required: true, email: true },
-                emailVali: { equalTo: '#email' },
-                credit: { creditcard: true },
-                image: { extension: "png|jpg|gif|jpeg" },
-                diem: { number: true, range: [0, 10] },
-                heso: { digits: true, min: 1 },
-                note: { maxlength: 255 },
-                baomat: { remote: "KiemTraMaBaoMat" }
-            },
-            messages: {
-                baomat: {
-                    remote: "Mã bảo mật không đúng"
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <script>
+        $(function () {
+            $("#myform").validate({
+                rules: {
+                    masv: { required: true, minlength: 6 },
+                    hoten: { required: true },
+                    ngaysinh: { date: true },
+                    email: { required: true, email: true },
+                    emailVali: { equalTo: '#email' },
+                    credit: { creditcard: true },
+                    image: { extension: "png|jpg|gif|jpeg" },
+                    diem: { number: true, range: [0, 10] },
+                    heso: { digits: true, min: 1 },
+                    note: { maxlength: 255 },
+                    baomat: { remote: "KiemTraMaBaoMat" }
                 },
-                note: {
-                    maxlength: "Tối đa 255 kí tự"
-                },
-                heso: {
-                    digits: "Vui lòng nhập đúng kiểu số nguyên", min: "Tối thiểu là 1"
-                },
-                diem: {
-                    number: "Nhập số thực", range: "Vui lòng nhập giá trịtừ0 đến 10"
-                },
-                image: {
-                    extension: "Chỉ được chọn file hình PNG|JPG|GIF"
-                },
-                credit: {
-                    creditcard: "Vui lòng nhập đúng định dạng số thẻ tín dụng"
-                },
-                emailVali: {
-                    equalTo: 'Email Không khớp'
-                },
-                email: {
-                    required: "Chưa nhập email", email: "Không đúng định dạng email"
-                },
-                ngaysinh: {
-                    date: "Vui lòng nhập đúng định dạng ngày sinh"
-                },
-                hoten: {
-                    required: "Chưa nhập Họ Tên"
-                },
-                masv: {
-                    required: "Chưa nhập Mã Sinh Viên", minlength: "Vui lòng nhập ít nhất 6 kí tự"
+                messages: {
+                    baomat: {
+                        remote: "Mã bảo mật không đúng"
+                    },
+                    note: {
+                        maxlength: "Tối đa 255 kí tự"
+                    },
+                    heso: {
+                        digits: "Vui lòng nhập đúng kiểu số nguyên", min: "Tối thiểu là 1"
+                    },
+                    diem: {
+                        number: "Nhập số thực", range: "Vui lòng nhập giá trịtừ0 đến 10"
+                    },
+                    image: {
+                        extension: "Chỉ được chọn file hình PNG|JPG|GIF"
+                    },
+                    credit: {
+                        creditcard: "Vui lòng nhập đúng định dạng số thẻ tín dụng"
+                    },
+                    emailVali: {
+                        equalTo: 'Email Không khớp'
+                    },
+                    email: {
+                        required: "Chưa nhập email", email: "Không đúng định dạng email"
+                    },
+                    ngaysinh: {
+                        date: "Vui lòng nhập đúng định dạng ngày sinh"
+                    },
+                    hoten: {
+                        required: "Chưa nhập Họ Tên"
+                    },
+                    masv: {
+                        required: "Chưa nhập Mã Sinh Viên", minlength: "Vui lòng nhập ít nhất 6 kí tự"
+                    }
                 }
-            }
+            });
         });
-    });
     </script>
-<style>
-    label.error {
-        color: Red;
-    }
+    <style>
+        .random {
+            text-align: center;
+        }
 
-    input.error {
-        border-color:red;
-    }
-</style>
+        label.error {
+            color: Red;
+        }
+
+        input.error {
+            border-color: red;
+        }
+    </style>
 
 }
 
