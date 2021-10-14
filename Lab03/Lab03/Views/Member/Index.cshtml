@@ -12,25 +12,83 @@
 <div class="container">
     <h3>Đăng ký thành viên</h3>
     <form id="myform" name="myform">
-        Mã SV: <input type="text" name="masv" id="masv" class="form-control mb-1" />
-        Họ Tên SV: <input type="text" name="hoten" id="hoten" class="form-control mb-1" />
-        Ngày sinh: <input type="date" name="ngaysinh" id="ngaysinh" class="form-control mb-1" />
-        Email: <input type="email" name="email" id="email" class="form-control mb-1" />
-        Xác nhận Email: <input type="email" name="emailVali" id="emailVali" class="form-control mb-1" />
-        Credit Card: <input type="text" name="credit" id="credit" class="form-control mb-1" />
-        Hình ảnh: <input type="file" name="image" inputmode="image" class="form-control mb-1" />
-        Điểm số: <input type="number" name="diem" id="diem" class="form-control mb-1" />
-        Hệ số: <input type="number" name="heso" id="heso" class="form-control mb-1" />
-        <div class="d-flex flex-row align-items-center mb-1">
-            Mã bảo mật: <input type="text" name="baomat" id="baomat" class="form-control mr-2" />
-            <span id="random" class="random text-danger form-control">@ViewBag.MaBaoMat</span>
+        <div class="form-group">
+            <div class="col-10">Mã sinh viên</div>
+            <div class="col">
+                <input type="text" name="masv" id="masv" class="form-control" />
+            </div>
         </div>
-        Thông tin thêm: <textarea name="note" class="form-control mb-1" placeholder="Nhập thông tin thêm..."></textarea>
-        <div class="d-flex flex-row align-items-center">
-            <button class="btn btn-primary mr-1">Đăng ký</button>
-            <button class="btn">Nhập lại</button>
+        <div class="form-group">
+            <div class="col-10">Họ tên SV</div>
+            <div class="col">
+                <input type="text" name="hoten" id="hoten" class="form-control" />
+            </div>
         </div>
-
+        <div class="form-group">
+            <div class="col-10">Ngày sinh</div>
+            <div class="col">
+                <input type="date" name="ngaysinh" id="ngaysinh" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-10">Email</div>
+            <div class="col">
+                <input type="email" name="email" id="email" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-10">Xác nhận Email</div>
+            <div class="col">
+                <input type="email" name="emailVali" id="emailVali" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-10">Credit Card</div>
+            <div class="col">
+                <input type="text" name="credit" id="credit" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-10">Hình ảnh</div>
+            <div class="col">
+                <input type="file" name="image" inputmode="image" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-10">Điểm số</div>
+            <div class="col">
+                <input type="number" name="diem" id="diem" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-10">Hệ số</div>
+            <div class="col">
+                <input type="number" name="heso" id="heso" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col">Mã bảo mật</div>
+            <div class="d-flex flex-row align-items-center">
+                <div class="col-8">
+                    <input type="text" name="baomat" id="baomat" class="form-control" />
+                </div>
+                <div class="col-4">
+                    <span id="random" class="random text-danger form-control">@ViewBag.MaBaoMat</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-10">Thông tin thêm</div>
+            <div class="col">
+                <textarea name="note" class="form-control" placeholder="Nhập thông tin thêm..."></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="d-flex flex-row align-items-center">
+                <button class="btn btn-outline-primary mr-1">Đăng ký</button>
+                <button class="btn btn-outline-dark">Nhập lại</button>
+            </div>
+        </div>
     </form>
 </div>
 @section Scripts {
@@ -97,7 +155,7 @@
     }
 
     input.error {
-        background: yellow;
+        border-color:red;
     }
 </style>
 
