@@ -91,19 +91,27 @@
     <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
     <script>
         $(function () {
+            //Định nghĩa ra một validator mới
+            function KTGmail(value,element) {
+                let rex = /^[a-z][a-z0-9]*([.][a-z0-9]+)*@@gmail.com$/g;
+                return this.optional(element) || rex.test(value);
+            }
+            $.validator.addMethod("gmail", KTGmail, "Chưa đúng định dạng email")
+
+
             $("#myform").validate({
                 rules: {
-                    masv: { required: true, minlength: 6, rangelength: [6,10]},
+                    masv: { required: true, minlength: 6, rangelength: [6, 10]},
                     hoten: { required: true },
                     ngaysinh: { date: true },
-                    email: { required: true, email: true },
+                    email: { required: true, email: true, gmail: true},
                     emailVali: { equalTo: '#email' },
                     credit: { creditcard: true },
-                    image: { extension: "png|jpg|gif|jpeg" },
+                    image: { extension: "png|jpg|gif|jpeg", accept: "image/*" },
                     diem: { number: true, range: [0, 10] },
                     heso: { digits: true, min: 1 },
                     note: { maxlength: 255 },
-                    baomat: { remote: "KiemTraMaBaoMat" }
+                    baomat: { remote: "Member/KiemTraMaBaoMat" }
                 },
                 messages: {
                     baomat: {

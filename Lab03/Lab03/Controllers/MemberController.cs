@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Lab03.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,11 @@ namespace Lab03.Controllers
     {
         public IActionResult Index()
         {
-            Random rd = new Random();
-            int MaBaoMat = rd.Next(1000, 100000);
-            ViewBag.MaBaoMat = MaBaoMat;
+            //Random rd = new Random();
+            //int MaBaoMat = rd.Next(1000, 100000);
+            //ViewBag.MaBaoMat = MaBaoMat;
+            var MaBaoMat = MyTool.MaBaoMat();
+            ViewBag.MaBaoMat = MyTool.MaBaoMat();
             HttpContext.Session.SetString("MaBaoMat", MaBaoMat.ToString());
             return View();
         }
