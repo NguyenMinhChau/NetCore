@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="/css/site.css" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" /> @RenderSection("MyStyle", required: false)
+</head>
+<body>
+    <div class="container">
+        <div>HEADER</div>
+        <div>NAV</div>
+        <div class="row">
+            <aside class="col-3">
+                LEFT MENU
+            </aside>
+            <div class="col-9">
+                @RenderBody()
+            </div>
+        </div>
+       <footer>
+           FOOTER
+       </footer>
+    </div>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/js/site.js"></script>
+    @RenderSection("MyScripts", required: false)
+</body>
+</html>
