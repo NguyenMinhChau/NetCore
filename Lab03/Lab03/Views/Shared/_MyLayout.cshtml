@@ -18,6 +18,15 @@
             </aside>
             <div class="col-9">
                 @RenderBody()
+                <!--@await Html.PartialAsync("tên partial View");-->
+                @await Html.PartialAsync("_PartialView");
+                @{
+                    var dsLoai = new List<Loai>();
+                    dsLoai.Add(new Loai { MaLoai = 1, TenLoai = "Laptop" });
+                    dsLoai.Add(new Loai { MaLoai = 2, TenLoai = "Điện thoại" });
+                    dsLoai.Add(new Loai { MaLoai = 3, TenLoai = "Tablet" });
+                }
+                @await Html.PartialAsync("_Loai",dsLoai);
             </div>
         </div>
        <footer>

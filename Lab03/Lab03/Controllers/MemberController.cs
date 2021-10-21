@@ -37,5 +37,14 @@ namespace Lab03.Controllers
                 return Json(data: true);
             }
         }
+        // ~/Member/DemoPartial
+        public IActionResult DemoPartialView()
+        {
+            var dsLoai = new List<Loai>();
+            dsLoai.Add(new Loai { MaLoai = 1, TenLoai = "Laptop" });
+            dsLoai.Add(new Loai { MaLoai = 2, TenLoai = "Điện thoại" });
+            dsLoai.Add(new Loai { MaLoai = 3, TenLoai = "Tablet" });
+            return PartialView("~/Views/Shared/_Loai.cshtml", dsLoai);
+        }
     }
 }
