@@ -93,7 +93,7 @@
         $(function () {
             $("#myform").validate({
                 rules: {
-                    masv: { required: true, minlength: 6 },
+                    masv: { required: true, minlength: 6, rangelength: [6,10]},
                     hoten: { required: true },
                     ngaysinh: { date: true },
                     email: { required: true, email: true },
@@ -137,7 +137,7 @@
                         required: "Chưa nhập Họ Tên"
                     },
                     masv: {
-                        required: "Chưa nhập Mã Sinh Viên", minlength: "Vui lòng nhập ít nhất 6 kí tự"
+                        required: "Chưa nhập Mã Sinh Viên", minlength: "Vui lòng nhập ít nhất 6 kí tự", rangelength: "Tối đa là 10 kí tự"
                     }
                 }
             });

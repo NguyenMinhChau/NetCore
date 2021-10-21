@@ -10,14 +10,13 @@ namespace Lab03.Models
     public class Member
     {
         public int ID { get; set; }
-        [Display(Name = "Mã SV")]
+        [Display(Name = "Mã Sinh Viên")]
         [Remote(action: "CheckSV", controller: "Member")]
         public string SinhVien { get; set; }
-        [Display(Name = "Họ tên")]
-        [MinLength(3, ErrorMessage = "Tối thiểu 3 kí tự")]
+        [Display(Name = "Họ và tên")]
         [StringLength(100)]
         public string FullName { get; set; }
-        [Display(Name = "Email")]
+        [Display(Name = "Email sing viên")]
         [EmailAddress]
         public string Email { get; set; }
         [Display(Name = "Ngày sinh")]
