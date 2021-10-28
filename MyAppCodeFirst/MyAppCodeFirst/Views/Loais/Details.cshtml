@@ -1,0 +1,41 @@
+﻿@model MyAppCodeFirst.EF.Loai
+
+@{
+    ViewData["Title"] = "DETAILS";
+}
+
+<h1>DETAILS</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenLoai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hinh)
+        </dt>
+        <dd class = "col-sm-10">
+           <img src="~/Hinh/Loai/@Model.Hinh" style="width:50px;height:30px"/>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LoaiTruoc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LoaiTruoc.TenLoai)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MaLoai">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
