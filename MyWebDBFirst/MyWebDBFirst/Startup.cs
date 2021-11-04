@@ -26,7 +26,7 @@ namespace MyWebDBFirst
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            //ĐỊNH NGHĨA CHO CRUD
+            //ĐỊNH NGHĨA CHO CONNECT SQL
             services.AddDbContext<eStore20Context>(option =>
             {
                 option.UseSqlServer(Configuration.GetConnectionString("MyAppDBFirst"));
