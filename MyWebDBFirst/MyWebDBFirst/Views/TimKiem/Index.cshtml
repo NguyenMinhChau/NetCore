@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TimKiemVM>
+@{
+    ViewData["Title"] = "PhanTrang";
+}
+<h3>Phân Trang</h3>
+
+Trang: @ViewBag.Trang / @ViewBag.TongSoTrang
+@if (Model != null)
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Hàng Hóa</th>
+                <th>Đơn giá</th>
+                <th>Ngày sx</th>
+                <th>Loại</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.MaHh</td>
+                    <td>@item.Tenhh</td>
+                    <td>@item.DonGia</td>
+                    <td>@item.NgaySv</td>
+                    <td> @item.Loai</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
