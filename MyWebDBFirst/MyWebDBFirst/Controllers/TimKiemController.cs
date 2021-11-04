@@ -11,12 +11,12 @@ namespace MyWebDBFirst.Controllers
     public class TimKiemController : Controller
     {
         private readonly eStore20Context _context;
+        const int PAGE_SIZE = 3;
 
         public TimKiemController(eStore20Context context)
         {
             _context = context;
         }
-        const int PAGE_SIZE = 3;
         public IActionResult Index(int page = 1)
         {
             ViewBag.Trang = page;
@@ -32,12 +32,14 @@ namespace MyWebDBFirst.Controllers
                     MaHh = hh.MaHh,
                     Tenhh = hh.TenHh,
                     DonGia = hh.DonGia.Value,
-                    NgaySv = hh.NgaySx,
+                    NgaySx = hh.NgaySx,
                     Loai = hh.MaLoaiNavigation.TenLoai,
                 });
        
             return View(result);
         }
+
+
         [HttpGet("/tim-kiem")]
         public IActionResult TimKiem()
         {
@@ -90,7 +92,7 @@ namespace MyWebDBFirst.Controllers
                 MaHh = hh.MaHh,
                 Tenhh = hh.TenHh,
                 DonGia = hh.DonGia.Value,
-                NgaySv = hh.NgaySx,
+                NgaySx = hh.NgaySx,
                 Loai = hh.MaLoaiNavigation.TenLoai,
             }).ToList();
             return View(data);

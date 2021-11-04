@@ -9,7 +9,7 @@ namespace MyWebDBFirst.Models
     {
         public int MaHh { get; set; }
         public string Tenhh { get; set; }
-        public DateTime NgaySv { get; set; }
+        public DateTime NgaySx { get; set; }
         public string Loai { get; set; }
         public double DonGia { get; set; }
     }

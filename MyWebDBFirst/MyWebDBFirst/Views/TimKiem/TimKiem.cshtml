@@ -14,14 +14,18 @@
 @if (Model != null)
 {
     <h3>Kết quả tìm kiếm</h3>
-    <a asp-action="TimKiem" asp-route-sortBy="DonGia" class="btn btn-primary">Đơn giá tăng dần</a>
-    <form asp-action="TimKiem" asp-route-sortBy="DonGia" asp-route-sortType="desc" class="btn btn-danger">
-          <input type="hidden" value="@ViewBag.KeyWord" name="KeyWord"/>
-          <input type="hidden" value="@ViewBag.From" name="From"/>
-          <input type="hidden" value="@ViewBag.To" name="To"/>
-          <input type="hidden" value="@ViewBag.To" name="To"/>
-     </form>
-
+    <form asp-action="TimKiem" asp-route-sortBy="DonGia">
+        <input type="hidden" value="@ViewBag.KeyWord" name="KeyWord" />
+        <input type="hidden" value="@ViewBag.From" name="From" />
+        <input type="hidden" value="@ViewBag.To" name="To" />
+        <button class="btn btn-primary">Đơn giá tăng dần</button>
+    </form>
+    <form asp-action="TimKiem" asp-route-sortBy="DonGia" asp-route-sortType="desc">
+        <input type="hidden" value="@ViewBag.KeyWord" name="KeyWord" />
+        <input type="hidden" value="@ViewBag.From" name="From" />
+        <input type="hidden" value="@ViewBag.To" name="To" />
+        <button class="btn btn-info">Đơn giá giảm dần</button>
+    </form>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -40,7 +44,7 @@
                     <td>@item.MaHh</td>
                     <td>@item.Tenhh</td>
                     <td>@item.DonGia</td>
-                    <td>@item.NgaySv</td>
+                    <td>@item.NgaySx</td>
                     <td> @item.Loai</td>
                 </tr>
             }
