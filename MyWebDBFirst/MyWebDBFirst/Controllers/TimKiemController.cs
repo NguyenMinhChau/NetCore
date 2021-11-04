@@ -65,7 +65,6 @@ namespace MyWebDBFirst.Controllers
             {
                 result = result.Where(hh => hh.DonGia.Value <= To);
             }
-            //ViewBag.DanhSach = result;
             //Sắp xếp
             if (sortType == "asc")
             {

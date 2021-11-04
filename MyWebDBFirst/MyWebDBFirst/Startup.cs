@@ -31,6 +31,7 @@ namespace MyWebDBFirst
             {
                 option.UseSqlServer(Configuration.GetConnectionString("MyAppDBFirst"));
             });
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +51,7 @@ namespace MyWebDBFirst
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
