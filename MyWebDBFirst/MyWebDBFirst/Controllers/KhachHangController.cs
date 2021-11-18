@@ -40,6 +40,7 @@ namespace MyWebDBFirst.Controllers
                         new Claim(ClaimTypes.Email, kh.Email),
                         new Claim(ClaimTypes.Name, kh.HoTen),
                         new Claim("FullName", kh.HoTen),
+                        new Claim("MaKh", kh.MaKh),
                         new Claim(ClaimTypes.Role, "Administrator"),
                         new Claim(ClaimTypes.Role, "Account"),
                     };
@@ -68,9 +69,11 @@ namespace MyWebDBFirst.Controllers
         [Authorize]
         public IActionResult Info()
         {
-            var data = HttpContext.User.Claims;
+            var makh = HttpContext.User.Claims.SingleOrDefault(c => c.Type == "MaKh").Value;
 
-            return View();
+            var kh = _context.KhachHang.SingleOrDefault(kh => kh.MaKh == makh);
+
+            return View(kh);
         }
         [Authorize]
         public async Task<IActionResult> DangXuat()
