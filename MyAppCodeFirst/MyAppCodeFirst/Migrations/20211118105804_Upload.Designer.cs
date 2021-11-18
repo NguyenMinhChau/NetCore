@@ -10,8 +10,8 @@ using MyAppCodeFirst.EF;
 namespace MyAppCodeFirst.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20211028031826_AddTableKhachHang")]
-    partial class AddTableKhachHang
+    [Migration("20211118105804_Upload")]
+    partial class Upload
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

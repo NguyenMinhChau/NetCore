@@ -2,10 +2,24 @@
 
 namespace MyAppCodeFirst.Migrations
 {
-    public partial class DbCodeFirst : Migration
+    public partial class Upload : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "KhachHang",
+                columns: table => new
+                {
+                    MaKH = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    HoTen = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DienThoai = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_KhachHang", x => x.MaKH);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Loai",
                 columns: table => new
@@ -14,11 +28,18 @@ namespace MyAppCodeFirst.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TenLoai = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     MoTa = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Hinh = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Hinh = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MaLoaiTruoc = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Loai", x => x.MaLoai);
+                    table.ForeignKey(
+                        name: "FK_Loai_Loai_MaLoaiTruoc",
+                        column: x => x.MaLoaiTruoc,
+                        principalTable: "Loai",
+                        principalColumn: "MaLoai",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,12 +69,20 @@ namespace MyAppCodeFirst.Migrations
                 name: "IX_HangHoa_MaLoai",
                 table: "HangHoa",
                 column: "MaLoai");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Loai_MaLoaiTruoc",
+                table: "Loai",
+                column: "MaLoaiTruoc");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "HangHoa");
+
+            migrationBuilder.DropTable(
+                name: "KhachHang");
 
             migrationBuilder.DropTable(
                 name: "Loai");
