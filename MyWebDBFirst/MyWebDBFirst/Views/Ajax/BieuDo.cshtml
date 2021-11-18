@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "BieuDo";
+    Layout = "~/Views/Shared/_Shopper.cshtml";
+}
+<h1>Tìm kiếm</h1>
+ Giá từ:
+<input name="Min" type="date" id="txtFrom" step="0.01" min="0" />
+ Đến:
+<input name="Min" type="date" id="txtTo" step="0.01" min="0" />
+<button id="btnTimKiem">Tìm kiếm</button>
+<h1>Bieu Do</h1>
+<canvas id="bar-chart" width="800" height="450"></canvas>
+@section MyScript{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script>
+        function LayDuLieu() {
+            $.ajax({
+                url: "/Ajax/ThongKe",
+                data: {
+                    from: $("#txtFrom").val(),
+                    to: $("#txtTo").val(),
+                },
+                success: function (res) {
+                    let tenloai = [];
+                    let giatri = [];
+                    $(res).each((index, value) => {
+                        tenloai.push(value.tenLoai)
+                        giatri.push(value.doanhThu)
+                    })
+                    new Chart($("#bar-chart"), {
+                        type: 'bar',
+                        data: {
+                            labels: tenloai,
+                            datasets: [
+                                {
+                                    label: "Doanh số (millions)",
+                                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                                    data: giatri
+                                }
+                            ]
+                        },
+                        options: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: 'Doanh số bán hàng (millions) in 2050'
+                            }
+                        }
+                    });
+                }
+            })
+        }
+        LayDuLieu();
+        $("#btnTimKiem").click(function (e) {
+            e.preventDefault();
+            LayDuLieu();
+        })
+    </script>
+}
