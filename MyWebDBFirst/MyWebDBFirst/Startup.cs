@@ -33,7 +33,11 @@ namespace MyWebDBFirst
                 option.UseSqlServer(Configuration.GetConnectionString("MyAppDBFirst"));
             });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie();
+            .AddCookie(option => {
+                option.LoginPath = "/KhachHang/DangNhap";
+                option.LogoutPath = "/KhachHang/DangXuat";
+                option.AccessDeniedPath = "/KhachHang/AccessDenied";
+            });
             services.AddSession();
         }
 

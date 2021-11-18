@@ -20,13 +20,15 @@ namespace MyWebDBFirst.Controllers
             _context = context;
         }
         [HttpGet]
-        public IActionResult DangNhap()
+        public IActionResult DangNhap( string ReturnUrl = null)
         {
+            ViewBag.ReturnUrl = ReturnUrl;
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> DangNhap(LoginVM model)
+        public async Task<IActionResult> DangNhap(LoginVM model, string ReturnUrl = null)
         {
+            ViewBag.ReturnUrl = ReturnUrl;
             if (ModelState.IsValid)
             {
                 var kh = _context.KhachHang.SingleOrDefault(kh => kh.MaKh == model.MaKh && kh.MatKhau == model.MatKhau);
@@ -51,11 +53,19 @@ namespace MyWebDBFirst.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
-                    return Redirect("/");
+                    if (string.IsNullOrEmpty(ReturnUrl))
+                    {
+                        return Redirect("/");
+                    }
+                    else
+                    {
+                        return Redirect(ReturnUrl);
+                    }
                 }
             }
             return View();
         }
+        [Authorize]
         public IActionResult Info()
         {
             var data = HttpContext.User.Claims;

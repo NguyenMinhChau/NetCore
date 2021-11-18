@@ -5,6 +5,7 @@
 }
 
 <form asp-action="DangNhap">
+        <input name="ReturnUrl" value="@ViewBag.ReturnUrl" type="hidden"/>
         <div>
             <label asp-for="MaKh"></label>
             <input asp-for="MaKh"/>
