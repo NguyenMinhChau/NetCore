@@ -1,0 +1,17 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "DangNhap";
+    Layout = "~/Views/Shared/_Shopper.cshtml";
+}
+
+<form asp-action="DangNhap">
+        <div>
+            <label asp-for="MaKh"></label>
+            <input asp-for="MaKh"/>
+        </div>
+        <div>
+            <label asp-for="MatKhau"></label>
+            <input asp-for="MatKhau"/>
+        </div>
+        <button>Login</button>
+</form>
